@@ -17,6 +17,8 @@ Kullanıcılar, Notion benzeri bir deneyimle görevler ekleyebilir, görev grupl
 - Basit ve kullanıcı dostu arayüz  
 
 ### Lisans
+[![License: CC BY-NC 4.0](https://licensebuttons.net/l/by-nc/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc/4.0/)
+
 Bu proje, **Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)** lisansı altında lisanslanmıştır.  
 Ticari amaçla kullanılamaz ve kaynak gösterilmesi gereklidir.
 
@@ -35,5 +37,7 @@ Users can add tasks, create task groups, and manage separate task lists for each
 - Simple and user-friendly interface  
 
 ### License
+[![License: CC BY-NC 4.0](https://licensebuttons.net/l/by-nc/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc/4.0/)
+
 This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)**.  
 Non-commercial use only; attribution to Pyrotter is required.
