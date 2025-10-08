@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.home-main {
+    position: relative;
+    width: 100%;
+  height: 100vh;
+  --color: rgba(114, 114, 114, 0.3);
+  background-color: #191a1a;
+  background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent),
+      linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent);
+  background-size: 55px 55px;
+}
+
+.home-nav {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    width: 100%;
+    color: white;
+    box-shadow: 0px 3px 29px 33px rgba(3,3,1,0.4),inset 3px -48px 100px 100px rgba(3,3,1,0.4);
+}   
+
+.home-nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+.home-article {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #f4f4f4;
+    height: 650px;
+    background-attachment: fixed;
+    padding: 2rem;
+    margin-top: 4rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.home-article h1 {
+  font-family: "Fugaz One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-shadow: 0px 0px 18px #CE5937;
+}
+
+.home-article p {
+ font-family: "Yomogi", cursive;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 17px;
+}
+
+.home-btn {
+ border: none;
+ color: #fff;
+ background-image: linear-gradient(30deg, #ff3e3e, #fad97d);
+ border-radius: 2px;
+ background-size: 100% auto;
+ font-family: inherit;
+ font-size: 17px;
+ font-weight: 500;
+ padding: 0.3em 1.2em;
+}
+
+.home-btn:hover {
+ background-position: right center;
+ background-size: 200% auto;
+ -webkit-animation: pulse 2s infinite;
+ animation: pulse512 1.5s infinite;
+}
+
+.home-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #191a1a7d;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px -3px 29px 33px rgba(3,3,1,0.2),inset 3px 48px 100px 100px rgba(3,3,1,0.2);
+}
+
+@keyframes pulse512 {
+ 0% {
+  box-shadow: 0 0 0 0 #ff7b009d;
+ }
+
+ 70% {
+  box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+ }
+
+ 100% {
+  box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+ }
+}
