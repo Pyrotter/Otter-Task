@@ -1,42 +1,179 @@
 <!DOCTYPE html> {% load static %}
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Otter Task</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/9.2.0/mdb.min.css" rel="stylesheet"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Yomogi&display=swap" rel="stylesheet">
+    <title>Otter Task - Görev Yönetimini Kolaylaştırın</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
 <body>
-   <main class="home-main">
-         <nav class="home-nav p-1">
-            <ul class="m-0 mt-3">
-                <li class="me-3"><a href=""><button class="home-btn">Register</button></a></li>
-                <li class="me-3"><a href=""><button class="home-btn">Sign In</button></a></li>
-            </ul>
-         </nav>
-         <div class="d-flex justify-content-center w-100">
-            <article class="home-article">
-                <h1>Welcome to Otter Task!</h1>
-                <p>Your personal task management application.</p>
-                <a href=""><button class="home-btn">Get Started</button></a>
-                <p style="font-size: 60px;">Burada kart yapilari olacak ve ufak bir site tanitimi yer alacak</p>
-            </article>
-         </div>
-        </main>
-        <footer class="home-footer">
-           <p>&copy; 2025 Pyrotter. All rights reserved.</p>
-       </footer>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-glow"></div>
 
+    <!-- Language Selector & Auth Buttons -->
+    <div class="lang-selector">
+        <div class="auth-buttons">
+            <a href="#" class="auth-btn btn-login">Giriş Yap</a>
+            <a href="#" class="auth-btn btn-signup">Kayıt Ol</a>
+        </div>
+        <div class="lang-dropdown">
+            <button class="lang-button" onclick="toggleLangMenu()">
+                <img src="https://flagcdn.com/w40/tr.png" alt="TR" id="current-flag">
+                <span id="current-lang">TR</span>
+            </button>
+            <div class="lang-options" id="lang-options">
+                <div class="lang-option" onclick="changeLang('tr')">
+                    <img src="https://flagcdn.com/w40/tr.png" alt="TR">
+                    <span>Türkçe</span>
+                </div>
+                <div class="lang-option" onclick="changeLang('en')">
+                    <img src="https://flagcdn.com/w40/gb.png" alt="EN">
+                    <span>English</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/9.2.0/mdb.umd.min.js"></script>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="logo-hero">
+               <svg height="256px" width="256px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path style="fill:#6B8F9C;" d="M434.087,311.255v33.789c0,24.588,19.933,44.522,44.522,44.522h22.261 c0-12.295-9.966-22.261-22.261-22.261v-87.93C465.707,289.927,442.093,304.4,434.087,311.255z"></path> <path style="fill:#325763;" d="M55.652,333.913C24.917,333.913,0,358.83,0,389.565h122.435l20.297-28.798l-20.297-26.854H55.652z"></path> <path style="fill:#FAE8AC;" d="M399.922,311.652v33.391c11.433,0,23.248-2.79,34.165-7.881c5.959-2.779,11.656-6.233,16.866-10.318 c15.957-12.507,25.99-29.567,27.656-47.471c0.169-1.816,0-3.639,0-5.468v-95.818l-76.125,1.388 C402.483,179.475,399.922,286.879,399.922,311.652z"></path> <path style="fill:#6B8F9C;" d="M122.435,294.957v94.609h111.304c0-13.523-10.963-24.487-24.487-24.487h-8.548 c8.37-5.821,16.061-12.544,22.94-20.035h131.751l28.807-59.687l-28.807-48.412l-122.902-19.968 C171.965,207.827,122.435,242.922,122.435,294.957z"></path> <path style="fill:#F6D76F;" d="M500.87,138.017l-22.261-15.583h-33.391L422.289,155.1l22.929,34.117 c0,0,40.904-13.635,50.087-16.696S512,160.445,512,152.487s0-14.47,0-14.47H500.87z"></path> <path style="fill:#325763;" d="M434.679,122.435c-18.365,0-38.981,13.948-45.813,30.995l-33.471,83.515v108.099 c0,12.288,4.986,23.418,13.045,31.477c8.058,8.058,19.189,13.045,31.477,13.045h22.261c0-12.299-9.962-22.261-22.261-22.261v-55.652 c5.781,0,11.853-1.319,17.607-3.666c0.06-0.024,0.121-0.046,0.18-0.07c14.858-6.135,27.513-19.098,27.513-34.007V155.715 l-9.98-16.611l9.98-16.669H434.679z"></path> <path style="fill:#05232E;" d="M429.635,139.075c0,8.849,6.879,16.061,15.583,16.64v-33.28 C436.513,123.014,429.635,130.226,429.635,139.075z"></path> </g></svg>
+            </div>
+            <h1 id="hero-title">Otter Task'a Hoş Geldiniz 👋</h1>
+            <p id="hero-desc">Görevleriniz artık çok daha kolay! Ekibinizle birlikte çalışın, her şeyi takip edin ve günlük işlerinizi daha keyifli hale getirin. Haydi, birlikte başlayalım!</p>
+            <a href="#" class="cta-button" id="cta-btn">Hemen Başlayın</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <!-- Feature 1 -->
+            <div class="feature-card" data-aos="fade-up" data-aos-duration="800">
+                <div class="feature-visual">
+                    <div class="feature-box">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 5H7C6.46957 5 5.96086 5.21071 5.58579 5.58579C5.21071 5.96086 5 6.46957 5 7V19C5 19.5304 5.21071 20.0391 5.58579 20.4142C5.96086 20.7893 6.46957 21 7 21H17C17.5304 21 18.0391 20.7893 18.4142 20.4142C18.7893 20.0391 19 19.5304 19 19V7C19 6.46957 18.7893 5.96086 18.4142 5.58579C18.0391 5.21071 17.5304 5 17 5H15M9 5C9 5.53043 9.21071 6.03914 9.58579 6.41421C9.96086 6.78929 10.4696 7 11 7H13C13.5304 7 14.0391 6.78929 14.4142 6.41421C14.7893 6.03914 15 5.53043 15 5M9 5C9 4.46957 9.21071 3.96086 9.58579 3.58579C9.96086 3.21071 10.4696 3 11 3H13C13.5304 3 14.0391 3.21071 14.4142 3.58579C14.7893 3.96086 15 4.46957 15 5M12 12H15M12 16H15M9 12H9.01M9 16H9.01"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="feature-content">
+                    <h2 id="feature1-title">Her Şey Bir Arada 📋</h2>
+                    <p id="feature1-desc">Tüm görevleriniz tek bir yerde! İster öncelikli işlerinizi ayırın, ister kategorilere bölün. Gelen kutunuzdan arşivinize kadar her şey düzenli ve hep elinizin altında.</p>
+                </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="feature-card reverse" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                <div class="feature-visual">
+                    <div class="feature-box">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17 20H22V18C22 16.3431 20.6569 15 19 15C18.0444 15 17.1931 15.4468 16.6438 16.1429M17 20H7M17 20V18C17 17.3438 16.8736 16.717 16.6438 16.1429M7 20H2V18C2 16.3431 3.34315 15 5 15C5.95561 15 6.80686 15.4468 7.35625 16.1429M7 20V18C7 17.3438 7.12642 16.717 7.35625 16.1429M7.35625 16.1429C8.0935 14.301 9.89482 13 12 13C14.1052 13 15.9065 14.301 16.6438 16.1429M15 7C15 8.65685 13.6569 10 12 10C10.3431 10 9 8.65685 9 7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7ZM21 10C21 11.1046 20.1046 12 19 12C17.8954 12 17 11.1046 17 10C17 8.89543 17.8954 8 19 8C20.1046 8 21 8.89543 21 10ZM7 10C7 11.1046 6.10457 12 5 12C3.89543 12 3 11.1046 3 10C3 8.89543 3.89543 8 5 8C6.10457 8 7 8.89543 7 10Z"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="feature-content">
+                    <h2 id="feature2-title">Takım Ruhunu Yaşayın 🤝</h2>
+                    <p id="feature2-desc">Ekibinizle gerçek zamanlı çalışmak hiç bu kadar kolay olmamıştı! Görevleri paylaşın, birbirinize atayın ve hep aynı frekansta olun. Birlikte başarmak çok daha güzel.</p>
+                </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="feature-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                <div class="feature-visual">
+                    <div class="feature-box">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="feature-content">
+                    <h2 id="feature3-title">Daha Verimli, Daha Huzurlu ⚡</h2>
+                    <p id="feature3-desc">Akıllı hatırlatıcılarımız hiçbir şeyi kaçırmanızı önler. İşlerinizi zamanında bitirin, performansınızı görün ve kendinizi her gün biraz daha geliştirin. Stres yok, sadece başarı var!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section footer-logo-section">
+                    <div class="footer-logo">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 11L12 14L22 4M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16"/>
+                        </svg>
+                    </div>
+                    <div class="footer-title">Otter Task</div>
+                    <p class="footer-description" id="footer-desc">Görev yönetimini sevdiren platform. Çünkü iş hayatı da keyifli olmalı! ✨</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3 id="contact-title">İletişim</h3>
+                    <div class="contact-info">
+                        <a href="mailto:info@ottertask.com" class="contact-item">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            <span>info@ottertask.com</span>
+                        </a>
+                        <a href="tel:+902121234567" class="contact-item">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                            </svg>
+                            <span>+90 (212) 123 45 67</span>
+                        </a>
+                        <div class="contact-item">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            <span>İstanbul, Türkiye</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3 id="social-title">Sosyal Medya</h3>
+                    <div class="social-links">
+                        <a href="#" class="card">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="card">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="card">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="card">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright" id="copyright">
+                © 2024 Otter Task. Tüm hakları saklıdır.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
