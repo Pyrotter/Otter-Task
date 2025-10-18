@@ -33,7 +33,7 @@ const translations = {
     heroTitle: "Otter Task'a Hoş Geldiniz 👋",
     heroDesc:
       "Görevleriniz artık çok daha kolay! Ekibinizle birlikte çalışın, her şeyi takip edin ve günlük işlerinizi daha keyifli hale getirin. Haydi, birlikte başlayalım!",
-    ctaBtn: "Hemen Başlayalım",
+    ctaBtn: "Hemen Başlayın",
     feature1Title: "Her Şey Bir Arada 📋",
     feature1Desc:
       "Tüm görevleriniz tek bir yerde! İster öncelikli işlerinizi ayırın, ister kategorilere bölün. Gelen kutunuzdan arşivinize kadar her şey düzenli ve hep elinizin altında.",
@@ -46,6 +46,8 @@ const translations = {
     footerDesc:
       "Görev yönetimini sevdiren platform. Çünkü iş hayatı da keyifli olmalı! ✨",
     contactTitle: "İletişim",
+    btnLogin: "Giriş Yap",
+    btnSignup: "Kayıt Ol",
     socialTitle: "Sosyal Medya",
     copyright: "© 2024 Otter Task. Tüm hakları saklıdır.",
   },
@@ -68,7 +70,9 @@ const translations = {
     contactTitle: "Contact",
     socialTitle: "Social Media",
     copyright: "© 2024 Otter Task. All rights reserved.",
-  },
+    btnLogin: "Login",
+    btnSignup: "Sign Up",
+  }
 };
 
 let currentLang = "tr";
@@ -80,33 +84,82 @@ function toggleLangMenu() {
 
 function changeLang(lang) {
   currentLang = lang;
-  const flag =
-    lang === "tr"
-      ? "https://flagcdn.com/w40/tr.png"
-      : "https://flagcdn.com/w40/gb.png";
+  const flag = lang === "tr" ? "https://flagcdn.com/w40/tr.png" : "https://flagcdn.com/w40/gb.png";
   const code = lang === "tr" ? "TR" : "EN";
 
-  document.getElementById("current-flag").src = flag;
-  document.getElementById("current-lang").textContent = code;
+  localStorage.setItem("flag", flag)
+  localStorage.setItem("code", code)
+
+
+
+  document.getElementById("current-flag").src = localStorage.getItem("flag");
+  document.getElementById("current-lang").textContent = localStorage.getItem("code");
+
 
   // Update content
   const t = translations[lang];
-  document.getElementById("hero-title").textContent = t.heroTitle;
-  document.getElementById("hero-desc").textContent = t.heroDesc;
-  document.getElementById("cta-btn").textContent = t.ctaBtn;
-  document.getElementById("feature1-title").textContent = t.feature1Title;
-  document.getElementById("feature1-desc").textContent = t.feature1Desc;
-  document.getElementById("feature2-title").textContent = t.feature2Title;
-  document.getElementById("feature2-desc").textContent = t.feature2Desc;
-  document.getElementById("feature3-title").textContent = t.feature3Title;
-  document.getElementById("feature3-desc").textContent = t.feature3Desc;
-  document.getElementById("footer-desc").textContent = t.footerDesc;
-  document.getElementById("contact-title").textContent = t.contactTitle;
-  document.getElementById("social-title").textContent = t.socialTitle;
-  document.getElementById("copyright").textContent = t.copyright;
+
+  localStorage.setItem("heroTitle", t.heroTitle)
+  localStorage.setItem("heroDesc", t.heroDesc)
+  localStorage.setItem("ctaBtn", t.ctaBtn)
+  localStorage.setItem("feature1Title", t.feature1Title)
+  localStorage.setItem("feature1Desc", t.feature1Desc)
+  localStorage.setItem("feature2Title", t.feature2Title)
+  localStorage.setItem("feature2Desc", t.feature2Desc)
+  localStorage.setItem("feature3Title", t.feature3Title)
+  localStorage.setItem("feature3Desc", t.feature3Desc)
+  localStorage.setItem("footerDesc", t.footerDesc)
+  localStorage.setItem("contactTitle", t.contactTitle)
+  localStorage.setItem("socialTitle", t.socialTitle)
+  localStorage.setItem("btnLogin", t.btnLogin)
+  localStorage.setItem("btnSignup", t.btnSignup)
+
+
+  document.getElementById("hero-title").innerText = localStorage.getItem("heroTitle");
+  document.getElementById("hero-desc").innerText = localStorage.getItem("heroDesc");
+  document.getElementById("cta-btn").innerText = localStorage.getItem("ctaBtn");
+  document.getElementById("feature1-title").innerText = localStorage.getItem("feature1Title");
+  document.getElementById("feature1-desc").innerText = localStorage.getItem("feature1Desc");
+  document.getElementById("feature2-title").innerText = localStorage.getItem("feature2Title");
+  document.getElementById("feature2-desc").innerText = localStorage.getItem("feature2Desc");
+  document.getElementById("feature3-title").innerText = localStorage.getItem("feature3Title");
+  document.getElementById("feature3-desc").innerText = localStorage.getItem("feature3Desc");
+  document.getElementById("footer-desc").innerText = localStorage.getItem("footerDesc");
+  document.getElementById("contact-title").innerText = localStorage.getItem("contactTitle");
+  document.getElementById("social-title").innerText = localStorage.getItem("socialTitle");
+  document.getElementById("btn-login").innerText = localStorage.getItem("btnLogin");
+  document.getElementById("btn-signup").innerText = localStorage.getItem("btnSignup");  
+
+
 
   document.getElementById("lang-options").classList.remove("active");
 }
+// On page load, set content based on saved language or default to Turkish
+
+  if (localStorage.getItem("flag")) {
+  document.getElementById("hero-title").innerText = localStorage.getItem("heroTitle");
+  document.getElementById("hero-desc").innerText = localStorage.getItem("heroDesc");
+  document.getElementById("cta-btn").innerText = localStorage.getItem("ctaBtn");
+  document.getElementById("feature1-title").innerText = localStorage.getItem("feature1Title");
+  document.getElementById("feature1-desc").innerText = localStorage.getItem("feature1Desc");
+  document.getElementById("feature2-title").innerText = localStorage.getItem("feature2Title");
+  document.getElementById("feature2-desc").innerText = localStorage.getItem("feature2Desc");
+  document.getElementById("feature3-title").innerText = localStorage.getItem("feature3Title");
+  document.getElementById("feature3-desc").innerText = localStorage.getItem("feature3Desc");
+  document.getElementById("footer-desc").innerText = localStorage.getItem("footerDesc");
+  document.getElementById("contact-title").innerText = localStorage.getItem("contactTitle");
+  document.getElementById("social-title").innerText = localStorage.getItem("socialTitle");
+  document.getElementById("btn-login").innerText = localStorage.getItem("btnLogin");
+  document.getElementById("btn-signup").innerText = localStorage.getItem("btnSignup");  
+  document.getElementById("current-flag").src = localStorage.getItem("flag");
+  document.getElementById("current-lang").textContent = localStorage.getItem("code");
+  }
+
+  
+ 
+
+  
+
 
 // Close dropdown when clicking outside
 document.addEventListener("click", function (event) {
