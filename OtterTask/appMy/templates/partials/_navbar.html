@@ -1,0 +1,47 @@
+    <div class="top-bar">
+        <div class="logo-nav">
+            <div class="logo-small">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 11L12 14L22 4M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16"/>
+                </svg>
+            </div>
+            <span class="brand-name">Otter Task</span>
+        </div>
+
+        <div class="top-actions">
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                <svg class="sun-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/>
+                    <line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg class="moon-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+            <a href="#" id="btn-login" class="auth-btn btn-login">Giriş Yap</a>
+            <a href="#" id="btn-signup" class="auth-btn btn-signup">Kayıt Ol</a>
+            <div class="lang-dropdown">
+                <button class="lang-button" onclick="toggleLangMenu()">
+                    <img src="https://flagcdn.com/w40/tr.png" alt="TR" id="current-flag">
+                    <span id="current-lang">TR</span>
+                </button>
+                <div class="lang-options" id="lang-options">
+                    <div class="lang-option" onclick="changeLang('tr')">
+                        <img src="https://flagcdn.com/w40/tr.png" alt="TR">
+                        <span>Türkçe</span>
+                    </div>
+                    <div class="lang-option" onclick="changeLang('en')">
+                        <img src="https://flagcdn.com/w40/gb.png" alt="EN">
+                        <span>English</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
